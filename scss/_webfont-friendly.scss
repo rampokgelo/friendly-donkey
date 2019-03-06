@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close:before {
+  content: "\e909";
+}
 .icon-quote:before {
   content: "\e900";
 }

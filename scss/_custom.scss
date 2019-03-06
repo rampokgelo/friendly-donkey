@@ -1,10 +1,14 @@
 .wrapper-content {
-    padding-top: 100px;
+    padding-top: 110px;
 }
 
 .oval-shape {
     position: absolute;
     z-index: -1;
+    @include media-breakpoint-down(sm) {
+        width: 100%;
+        position: fixed;
+    }
 }
 
 .main-nav {
@@ -18,7 +22,7 @@
             padding-left: $spacer;
         }
     }
-    &.change{
+    &.change {
         background-color: rgba(255, 255, 255, 1);
         box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
     }
@@ -27,6 +31,9 @@
 .banner {
     padding: ($spacer*2) 0;
     position: relative;
+    @include media-breakpoint-down(sm) {
+        padding: 0 0 ($spacer*2);
+    }
     .oval-shape {
         margin-top: -50%;
         right: -50%;
@@ -52,17 +59,27 @@
                     z-index: 1;
                     box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
                     >span {
-                        position: relative;
-                        display: inline-block;
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            z-index: -1;
-                            bottom: 5px;
-                            left: 0;
-                            width: 100%;
-                            height: 5px;
-                            background: $secondary;
+                        display: inline;
+                        background: url('../images/underline-word.png');
+                        background-repeat: repeat-x;
+                        background-position: left bottom 7px;
+                    }
+                }
+            }
+            @include media-breakpoint-down(sm) {
+                display: block;
+                .banner-img {
+                    width: 100%;
+                }
+                .banner-caption {
+                    margin-top: -1rem;
+                    width: 100%;
+                    padding: 0 0 0 $spacer;
+                    >h2 {
+                        margin-left: 0;
+                        font-size: $font-size-base*1.5;
+                        >span {
+                            background-position: left bottom 5px;
                         }
                     }
                 }
@@ -72,6 +89,13 @@
             position: absolute;
             top: 0;
             right: 0;
+            @include media-breakpoint-down(sm) {
+                margin-top: $spacer;
+                top: auto;
+                right: auto;
+                left: 0;
+                bottom: 0;
+            }
         }
     }
 }
@@ -97,8 +121,8 @@
             }
         }
     }
-    &.together{
-        .oval-shape{
+    &.together {
+        .oval-shape {
             right: -15%;
             margin-top: -10%;
         }
@@ -111,17 +135,10 @@
     color: $primary;
     position: relative;
     z-index: 1;
-    display: inline-block;
-    &::before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        bottom: 5px;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: $secondary;
-    }
+    display: inline;
+    background: url('../images/underline-word.png');
+    background-repeat: repeat-x;
+    background-position: left bottom 9px;
     &.inverse {
         color: $white;
     }
@@ -169,13 +186,81 @@
             }
         }
     }
+    @include media-breakpoint-down(sm) {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        .work-item {
+            flex: 0 0 90%;
+            padding: 0;
+            margin: auto ($spacer/4);
+            .caption-work {
+                width: 200px;
+                height: 200px;
+                bottom: -10%;
+                right: -10%;
+                padding: ($spacer) ($spacer*3) ($spacer) ($spacer*1.5);
+                h4 {
+                    font-size: $font-size-base *1.2;
+                }
+                >.caption-center {
+                    >.mr-5 {
+                        margin-right: 0 !important;
+                    }
+                }
+            }
+            &:hover {
+                .caption-work {
+                    bottom: -10%;
+                    right: -10%;
+                }
+                .img-work {
+                    >img {
+                        opacity: .9;
+                    }
+                }
+            }
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 }
 
 .testi {
+    position: relative;
     padding-top: $spacer*5;
-    background-image: url('../images/bg-testi.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: $choco-light;
+        transform: skewY(-3deg);
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-image: url('../images/oval-about.svg'), url('../images/oval-banner.svg');
+        background-size: 40%;
+        background-position: left -30% bottom, right -30% top;
+        background-repeat: no-repeat;
+        transform: skewY(-3deg);
+        opacity: .2;
+    }
+    @include media-breakpoint-down(sm) {
+        &::after {
+            background-size: 100%;
+            background-position: left -100px bottom, right -100px top;
+        }
+    }
     .testi-carousel {
         padding-left: $spacer*1.2;
         padding-right: $spacer*1.2;
@@ -197,11 +282,11 @@
             position: absolute;
             top: 50%;
             width: 100%;
-            margin-left: -$spacer*1.2;
-            margin-right: -$spacer*1.2;
+            left: 0;
             display: flex;
             justify-content: space-between;
-            @include translate(0, -70%);
+            @include translate(0,
+            -70%);
             pointer-events: none;
             .owl-prev,
             .owl-next {
@@ -250,33 +335,88 @@
                 }
             }
         }
+        @include media-breakpoint-down(sm) {
+            .item {
+                padding: 0;
+            }
+            .testi-item {
+                padding: $spacer;
+                .testi-paragraph {
+                    position: relative;
+                    padding-left: 0;
+                    padding-top: 0;
+                    font-size: $font-size-base;
+                    line-height: $line-height-sm;
+                }
+                .testi-people {
+                    >img {
+                        margin-left: -$spacer;
+                    }
+                    .bar {
+                        margin-left: -$spacer;
+                    }
+                }
+            }
+            .owl-nav {
+                top: 50px;
+                @include translate(0,
+                0);
+                .owl-prev,
+                .owl-next {
+                    >img {
+                        width: 25px;
+                    }
+                }
+                .owl-prev {
+                    margin-left: -6px;
+                }
+                .owl-next {
+                    margin-right: -6px;
+                }
+            }
+        }
     }
 }
 
-.getouch{
-    [class^="col-"],[class*="col-"]{
+.getouch {
+    [class^="col-"],
+    [class*="col-"] {
         padding-top: $spacer;
         padding-bottom: $spacer;
         border-right: solid 1px $gray-500;
-        [class^="icon-"],[class*="icon-"]{
+        [class^="icon-"],
+        [class*="icon-"] {
             color: $secondary;
             font-size: $font-size-base * 2.5;
         }
-        a{
+        a {
             color: $body-color;
         }
-        p{
+        p {
             margin-bottom: 0;
         }
-        &:last-child{
+        &:last-child {
             border-right: none;
         }
-       
+    }
+    @include media-breakpoint-down(sm) {
+        padding-left: $spacer;
+        padding-right: $spacer;
+        [class^="col-"],
+        [class*="col-"] {
+            padding-bottom: $spacer*2;
+            padding-top: $spacer*2;
+            border-right: none;
+            border-bottom: solid 1px $gray-500;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
     }
 }
 
-.socmed{
-    .btn{
+.socmed {
+    .btn {
         padding-left: 13px;
         padding-right: 13px;
         width: 48px;
@@ -285,29 +425,68 @@
         background-color: transparent;
         margin-left: $spacer/4;
         margin-right: $spacer/4;
-        &.btn-fb{
+        &.btn-fb {
             border-color: $fb-color;
             color: $fb-color;
-            &:hover{
+            &:hover {
                 color: $white;
                 background-color: $fb-color;
             }
         }
-        &.btn-tw{
+        &.btn-tw {
             border-color: $tw-color;
             color: $tw-color;
-            &:hover{
+            &:hover {
                 color: $white;
                 background-color: $tw-color;
             }
         }
-        &.btn-insta{
+        &.btn-insta {
             border-color: $insta-color;
             color: $insta-color;
-            &:hover{
+            &:hover {
                 color: $white;
                 background-color: $insta-color;
             }
+        }
+    }
+}
+
+.sidebar {
+    @include media-breakpoint-down(sm) {
+        @include transition(all .3s ease-in-out);
+        overflow-y: auto;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        padding-top: 110px;
+        background: $white;
+        &.show {
+            right: 0;
+        }
+        &.show {
+            right: 0;
+        }
+        .navbar-nav {
+            text-align: center;
+            >.nav-item {
+                font-size: $font-size-base *2;
+                >.nav-link {
+                    padding: $navbar-nav-link-padding-x *1.5;
+                }
+            }
+        }
+    }
+}
+
+.letswork {
+    @include media-breakpoint-down(sm) {
+        margin-bottom: $spacer;
+        img {
+            width: 100px;
         }
     }
 }
