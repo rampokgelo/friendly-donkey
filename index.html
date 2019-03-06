@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <title>Friendly Donkey</title>
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
       rel="stylesheet"
@@ -9,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css" />
     <link rel="stylesheet" type="text/css" href="css/owl.theme.default.css" />
-    <title>Friendly Donkey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
@@ -20,18 +21,14 @@
           ><img src="images/logo.svg" height="70" alt=""
         /></a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler burger-menu"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          id="sidebarButton"
         >
-          <span class="navbar-toggler-icon"></span>
+          <i class="toggler-icon icon-burger-menu"></i>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-end">
+        <div class="sidebar navbar-collapse justify-content-end">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="#">Home</a>
@@ -356,10 +353,15 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-sm-4">
-              <img src="images/donkey.svg" />
+              <img class="d-none d-sm-block"  src="images/donkey.svg" />
             </div>
             <div class="col-12 col-sm-8">
-              <h3 class="title-section">Let's Work Together</h3>
+              <div class="media letswork">
+                  <img class="d-block d-sm-none mr-3" src="images/donkey.svg" />
+                  <div class="media-body">
+                      <h3 class="title-section">Let's Work Together</h3>
+                  </div>
+              </div>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -397,7 +399,7 @@
               </p>
             </div>
           </div>
-          <div class="row py-5 getouch">
+          <div class="row py-3 p-sm-5 getouch">
             <div class="col-12 col-sm-4">
               <div class="text-center">
                 <div class="mb-3"><i class="icon-mail"></i></div>
@@ -432,6 +434,7 @@
       </section>
       <!-- END GET IN TOUCH-->
     </footer>
+
     <!-- END FOOTER -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
