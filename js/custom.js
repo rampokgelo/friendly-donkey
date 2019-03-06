@@ -16,10 +16,14 @@ $(document).ready(function() {
     type: "foreground",
     direction: "vertical"
   });
+  $('#sidebarButton').click(function(){
+    $('.sidebar').toggleClass('show');
+    $('.toggler-icon').toggleClass('icon-burger-menu icon-close');
+  });
 });
 
 $(window).scroll(function(){
-  if ($(window).scrollTop() >= 200) {
+  if ($(window).scrollTop() >= 150) {
       $('.main-nav').addClass('change');  }
   else {
       $('.main-nav').removeClass('change');
